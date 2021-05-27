@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // connect .js routes
 app.use('/books', booksDelete);
-app.use('/books', booksUpdate)
+app.use('/books', booksUpdate);
 
 app.use('/books', booksRouter);
 

@@ -11,6 +11,25 @@ function addClickHandlers() {
 
   // TODO - Add code for edit & delete buttons
   $('#bookShelf').on('click', '.delete', deleteBookHandler)
+
+  $('#bookShelf').on('click', '.read', putReadHandler)
+}
+
+function putReadHandler(){
+  readBook($(this).data('id'));
+}
+
+function readBook(bookId){
+  $.ajax({
+    method: 'PUT',
+    url: `/books/${bookId}`
+  }).then( (response) => {
+    console.log('I read that book');
+    refreshBooks();
+}).catch(err =>{
+    console.log('book was not updated');
+    alert('there was an error with updating')
+})
 }
 
 function deleteBookHandler(){
