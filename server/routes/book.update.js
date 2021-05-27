@@ -8,7 +8,7 @@ router.put('/:id', (req, res) =>{
     const itemToUpdate = req.params.id;
     console.log('book updated to read', itemToUpdate);
     // make queryString target isRead column and make boolean true
-    const queryString = `UPDATE "books" SET "isRead"=TRUE WHERE "books".id = $1;`;
+    const queryString = `UPDATE "books" SET "isRead"=NOT "isRead" WHERE "books".id = $1;`; 
 
     pool.query(queryString, [itemToUpdate])
     .then( response => {
